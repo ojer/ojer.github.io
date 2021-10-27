@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class GenCatalogue {
-    public static void main() throws IOException {
+    public static void main(String[] args) throws IOException {
         String pageFolder = "page";
         String cataloguePrefix = "1. [";
         String catalogueSplicing = "](./" + pageFolder + "/";
