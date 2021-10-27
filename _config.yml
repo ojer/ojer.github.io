@@ -1,10 +1,5 @@
-title: Ojer
-logo: /assets/img/ojer.jfif
-description: sonamu@foxmail.com
-show_downloads: false
-google_analytics: false
-theme: jekyll-theme-minimal
-github:
-    is_user_page: false
-    is_project_page: false
-    orderedlist: false
+title: Leap Day theme
+description: Leap Day is a theme for GitHub Pages.
+show_downloads: true
+google_analytics:
+theme: jekyll-theme-leap-day
