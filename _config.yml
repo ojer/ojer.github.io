@@ -1,6 +1,7 @@
 lang: zh
 title: ojer 
 description: sonamu@foxmail.com
+show_head: false
 show_downloads: false 
 google_analytics: false
 theme: jekyll-theme-leap-day
