@@ -4,3 +4,8 @@ description: sonamu@foxmail.com
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
+github:
+    site:
+        github.is_project_page: false
+        orderedlist: false
+
