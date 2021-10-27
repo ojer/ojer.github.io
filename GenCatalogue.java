@@ -22,6 +22,7 @@ public class GenCatalogue {
         for (File mdFile : files) {
             bufferedWriter.newLine();
             String name = mdFile.getName();
+            name = name.substring(0,name.lastIndexOf("."));
             bufferedWriter.write(cataloguePrefix + name + catalogueSplicing + name + catalogueSuffix);
             bufferedWriter.flush();
         }
