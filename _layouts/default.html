@@ -28,11 +28,11 @@
     </header>
 
     <main id="content" class="main-content" role="main">
+        {{ content }}
+
         <aside class="site-aside">
             {% include catalogue.html %}
         </aside>
-
-        {{ content }}
 
         <footer class="site-footer">
             {% if site.github.is_project_page %}
