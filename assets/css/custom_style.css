@@ -1,0 +1,13 @@
+.main-content {
+    float: right;
+    min-width: 64rem;
+}
+
+.site-aside{
+    float: left;
+    min-width: 15rem;
+    margin-top: 2rem;
+}
+
+
+
