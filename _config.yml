@@ -1,5 +1,8 @@
-title: Leap Day theme
-description: Leap Day is a theme for GitHub Pages.
-show_downloads: true
-google_analytics:
+lang: zh
+title: ojer 
+description: sonamu@foxmail.com
+show_downloads: false 
+google_analytics: false
 theme: jekyll-theme-leap-day
+github:
+    is_project_page: false
