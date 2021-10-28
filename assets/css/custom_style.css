@@ -10,5 +10,7 @@
     width: 24vw;
 }
 
-
+.site-aside > ul > li {
+    margin: 10px;
+}
 
