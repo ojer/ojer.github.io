@@ -1,12 +1,13 @@
 .main-content {
     float: right;
-    min-width: 64rem;
+    min-width: 64vw;
+    max-width: 72vw;
 }
 
 .site-aside{
     float: left;
-    min-width: 15rem;
     margin-top: 2rem;
+    width: 24vw;
 }
 
 
