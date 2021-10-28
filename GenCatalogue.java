@@ -8,8 +8,8 @@ public class GenCatalogue {
         String pageFolder = "page";
         String includes = "_includes/catalogue.html";
 
-        String cataloguePrefix = "<li><a href=\"{{ /" + pageFolder + "/";
-        String catalogueSplicing = ".html }}\">";
+        String cataloguePrefix = "<li><a href=\"{{ '/" + pageFolder + "/";
+        String catalogueSplicing = ".html' }}\">";
         String catalogueSuffix = "</a></li>";
 
         File pages = new File(pageFolder);
