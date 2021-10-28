@@ -8,7 +8,6 @@ public class GenCatalogue {
         String pageFolder = "page";
         String includes = "_includes/catalogue.html";
 
-    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
         String cataloguePrefix = "<li><a href=\"{{ /" + pageFolder + "/";
         String catalogueSplicing = ".html }}\">";
         String catalogueSuffix = "</a></li>";
