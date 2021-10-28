@@ -9,7 +9,7 @@ public class GenCatalogue {
         String includes = "_includes/catalogue.html";
         String cataloguePrefix = "<li><a href=\"./" + pageFolder + "/";
         String catalogueSplicing = ".html\">";
-        String catalogueSuffix = "</a></li>)";
+        String catalogueSuffix = "</a></li>";
 
         File pages = new File(pageFolder);
         File index = new File(includes);
