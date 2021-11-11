@@ -9,12 +9,12 @@
 }
 
 @keyframes slashStar {
-     0% {
-         opacity:1
-     }
-     to {
-         opacity:0
-     }
+     0% {
+         opacity:1
+     }
+     to {
+         opacity:0
+     }
 }
 ```
 # px2pw
@@ -27,8 +27,8 @@
 		<style>
 			.lost{
 				color: #FFF;
-				position: absolute; 
-				top: 38.165vw; 
+				position: absolute; 
+				top: 38.165vw; 
 				left: 24.597vw;
 			}
 			.lost i{
@@ -42,7 +42,7 @@
 		<div style="width: 61.8vw;margin:4.392vw auto;height: 38.1924vw;background: #000;">
 			<div style="padding: 4.026vw;">
 				<div style="color:#b1b1b1;margin-bottom:2.196vw;font-size:1.025vw;">
-					Setting: 100vw = 
+					Setting: 100vw = 
 					<input id="ininVal" value="1920" style="height:1.464vw;width:7.321vw;border:solid 0.0734vw #828282;font-size:1.025vw;background: #000;color:#24a44a;">
 					px
 				</div>
@@ -82,15 +82,15 @@
 		document.getElementById('copy-btn').addEventListener('click', function(){
 			calcVal();
 			copyText();	
-		}, false);   
+		}, false);   
 
 
 		document.getElementById('inp').addEventListener('focus', function(){
 			document.getElementById("inp").value = "";
-			setTimeout(function(){ 
+			setTimeout(function(){ 
 				document.getElementById("result-i").style.display = 'none';
 			}, 2333);
-		}, false);   
+		}, false);   
 
 		function calcVal(){
 			let initVal = document.getElementById("ininVal").value;
@@ -127,7 +127,7 @@
 -- 类名是 c1 或 c2
 
 #### .c1 > .c2{}
--- 类名是c2 
+-- 类名是c2 
 -- 直接父元素类名是 c1
 
 #### .c1 + .c2{}
@@ -137,3 +137,31 @@
 #### .c1 ~ .c2{}
 -- 类名是 c2
 -- 元素前存在一个类名是 c1 的同级元素
+
+
+
+
+
+# clear
+
+### 定义和用法
+
+clear 属性规定元素的哪一侧不允许其他浮动元素。
+### 说明
+
+clear 属性定义了元素的哪边上不允许出现浮动元素。在 CSS1 和 CSS2 中，这是通过自动为清除元素（即设置了 clear 属性的元素）增加上外边距实现的。在 CSS2.1 中，会在元素上外边距之上增加清除空间，而外边距本身并不改变。不论哪一种改变，最终结果都一样，如果声明为左边或右边清除，会使元素的上外边框边界刚好在该边上浮动元素的下外边距边界之下。
+
+| 默认值      | none                      |
+| ---------- | ------------------------- |
+| 继承性      | no                        |
+| 版本        | CSS1                      |
+| JavaScript | `object.style.clear="left"` |
+
+### 可能的值
+| 值 | 描述 |
+| --- | --- |
+| left    | 在左侧不允许浮动元素               |
+| right   | 在右侧不允许浮动元素               |
+| both    | 在左右两侧均不允许浮动元素          |
+| none    | 默认值  允许浮动元素出现在两侧      |
+| inherit | 规定应该从父元素继承 clear 属性的值 |
