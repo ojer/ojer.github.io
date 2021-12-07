@@ -129,3 +129,14 @@ public class K {
 
 ```
 
+
+```
+static int capacity(int expectedSize) {
+    if (expectedSize < 3) {
+        CollectPreconditions.checkNonnegative(expectedSize, "expectedSize");
+        return expectedSize + 1;
+    } else {
+        return expectedSize < 1073741824 ? (int)((float)expectedSize / 0.75F + 1.0F) : 2147483647;
+    }
+}
+```
