@@ -100,3 +100,33 @@
 ```
 
 `-DskipTests=true package`
+
+
+
+```
+mvn dependency:list -Dverbose    列出不同版本 jar
+mvn dependency:tree -Dverbose    列出项目的包依赖树
+    -Dincludes 出指定要求的jar，其他的忽略
+        参数值：[groupId]:[artifactId]:[type]:[version]
+        示例 -Dincludes=velocity:velocity，只列出velocity的依赖关系
+            -Dincludes=:spring-aop，
+            -Dincludes=:::5.0.6.RELEASE，
+            -Dincludes=org.springframework
+        通配符：org.apache.*, :::*-SNAPSHOT
+        多参：-Dincludes=org.apache.maven*,org.codehaus.plexus
+    -Dexcludes    排除指定的jar
+
+dependency:analyze-only    依赖分析
+dependency:analyze-duplicate    查找重复声明的依赖
+mvn dependency:list-repositories    列出远程repositories
+dependency:purge-local-repository    清理本地repository
+    解析整个项目的依赖，然后从本地清理，重新从远程 repository 下载这个命令默认的对所有的依赖项进行操作。它会在清除操作之前，下载某些缺失的依赖来收集完整的依赖树信息。
+为了避免这些预下载的操作，你可以设置参数，
+    -DactTransitively=false   仅对项目的直接依赖进行操作。
+    -Dincludes 指定依赖 
+	 dependency:purge-local-repository -Dincludes=org.slf4j:slf4j-api,org.slf4j:log4j-over-slf4j。
+    -Dexcludes 排除依赖。
+
+    -DmanualInclude    清理不在本项目中的依赖，但是不会重新解析依赖，因为本项目不需要这些依赖。 对清理parent pom，导入的pom，maven插件非常有用
+
+```
