@@ -13,6 +13,7 @@
 ```
 
 - package jar 引入依赖
+
 ```
 <plugin>
     <artifactId>maven-assembly-plugin</artifactId>
@@ -48,18 +49,20 @@
         <target>1.8</target>
         <encoding>UTF-8</encoding>
         <compilerArguments>
-           <verbose></verbose>
-           <bootclasspath>${java.home}\lib\rt.jar;${java.home}\lib\jce.jar</bootclasspath>
+           <verbose></verbose>
+           <bootclasspath>${java.home}\lib\rt.jar;${java.home}\lib\jce.jar</bootclasspath>
            <extdirs>src\lib;${env.JAVA_HOME}\jre\lib\ext</extdirs>
         </compilerArguments>
     </configuration>
 </plugin>
 ```
+
 - package war 引入依赖
+
 ```
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-war-plugin</artifactId> 
+    <artifactId>maven-war-plugin</artifactId> 
     <configuration>
         <webResources>
             <resource>
@@ -102,6 +105,7 @@
 `-DskipTests=true package`
 
 
+- dependency
 
 ```
 mvn dependency:list -Dverbose    列出不同版本 jar
@@ -123,10 +127,9 @@ dependency:purge-local-repository    清理本地repository
     解析整个项目的依赖，然后从本地清理，重新从远程 repository 下载这个命令默认的对所有的依赖项进行操作。它会在清除操作之前，下载某些缺失的依赖来收集完整的依赖树信息。
 为了避免这些预下载的操作，你可以设置参数，
     -DactTransitively=false   仅对项目的直接依赖进行操作。
-    -Dincludes 指定依赖 
-	 dependency:purge-local-repository -Dincludes=org.slf4j:slf4j-api,org.slf4j:log4j-over-slf4j。
+    -Dincludes 指定依赖
+     dependency:purge-local-repository -Dincludes=org.slf4j:slf4j-api,org.slf4j:log4j-over-slf4j。
     -Dexcludes 排除依赖。
 
     -DmanualInclude    清理不在本项目中的依赖，但是不会重新解析依赖，因为本项目不需要这些依赖。 对清理parent pom，导入的pom，maven插件非常有用
-
 ```
