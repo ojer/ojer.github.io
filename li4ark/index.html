@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>li4ark</title>
+    <link rel="icon" href="./image/icon-16.png" type="image/png" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script type="module" src="./js/index.js"></script>
+  </head>
+
+  <body>
+    <a id="preview-light" class="preview-overlay" href="#">
+      <img src="./image/light.png" />
+    </a>
+    <a id="preview-dark" class="preview-overlay" href="#">
+      <img src="./image/dark.png" />
+    </a>
+
+    <input
+      id="m0"
+      name="menu-item"
+      value="m0"
+      type="radio"
+      class="menu-radio-group"
+    />
+    <input
+      id="m1"
+      name="menu-item"
+      value="m1"
+      type="radio"
+      class="menu-radio-group"
+      checked
+    />
+    <input
+      id="m2"
+      name="menu-item"
+      value="m1"
+      type="radio"
+      class="menu-radio-group"
+    />
+    <header>
+      <div>
+        <img
+          class="logo"
+          src="./image/icon.png"
+          alt=""
+          width="32"
+          height="32"
+        />
+        <strong class="addons-name"> li4ark </strong>
+        <div class="menu">
+          <!-- <label for="m0" class="menu-item menu-item-0"> 首选项 </label> -->
+          <label for="m1" class="menu-item menu-item-1"> 关于 </label>
+          <label for="m2" class="menu-item menu-item-2"> 帮助 </label>
+        </div>
+      </div>
+
+      <hr />
+    </header>
+    <main>
+      <div class="menu-content menu-content-1">
+        <section>
+          <div class="screen">
+            <figure>
+              <a href="#preview-light">
+                <img
+                  src="./image/light.png"
+                  alt=""
+                  srcset="./image/light.png 977w"
+                  sizes="30vw"
+                />
+              </a>
+              <figcaption class="center">Light</figcaption>
+            </figure>
+            <figure>
+              <a href="#preview-dark">
+                <img
+                  src="./image/dark.png"
+                  alt=""
+                  srcset="./image/dark.png 977w"
+                  sizes="30vw"
+                />
+              </a>
+              <figcaption class="center">Dark</figcaption>
+            </figure>
+          </div>
+        </section>
+        <section>
+          <h3>#&ensp;切换颜色方案</h3>
+          <blockquote>
+            <p>点击我的工具栏图标打开菜单, 选择颜色方案和滤镜</p>
+            <p>使用我的工具栏在 '亮色/暗色' 颜色方案之间切换</p>
+            <p>当你切换至一种颜色方案或滤镜时, 我会:</p>
+            <p>-&ensp;为你切换页面颜色</p>
+            <p>-&ensp;记住你为该域名所选择的颜色方案和滤镜</p>
+            <p>当你打开相同主域名的新标签页时, 我会:</p>
+            <p>-&ensp;将页面切换为你上次所使用的颜色方案和滤镜</p>
+          </blockquote>
+        </section>
+        <section>
+          <h3>#&ensp;扩展商店</h3>
+          <a
+            href="https://addons.mozilla.org/firefox/addon/li4ark"
+            target="_blank"
+          >
+            <figure>
+              <img
+                src="./image/get-the-addon-fx-apr-2020.svg"
+                class="get-the-addon"
+              />
+              <figcaption>
+                <samp> https://addons.mozilla.org/firefox/addon/li4ark </samp>
+              </figcaption>
+            </figure>
+          </a>
+        </section>
+      </div>
+
+      <div class="menu-content menu-content-2">
+        <section>
+          <h3>#&ensp;颜色方案切换无效果</h3>
+          <blockquote>
+            <p>百分之 95 的可能性是该网址不否支持主题颜色方案切换.</p>
+            <p>
+              但仍需要保持严谨,
+              打开一个支持切换主题颜色方案切换的网址尝试功能是否可用.
+            </p>
+            <p>比如 MDN Web 文档:</p>
+            <blockquote>
+              <cite>
+                <a
+                  href="https://developer.mozilla.org/docs/Web/CSS/@media/prefers-color-scheme"
+                  target="_blank"
+                  >https://developer.mozilla.org</a
+                >
+              </cite>
+            </blockquote>
+            <p>
+              如果你浏览的页面不支持颜色方案切换, 可以尝试开启 '智能反转' 滤镜
+            </p>
+          </blockquote>
+        </section>
+
+        <section>
+          <h3>#&ensp;切换颜色方案后的显示效果与主题色相反</h3>
+          <blockquote>
+            <p>检查是否对该页面开启了反转滤镜</p>
+            <p>当页面支持主题颜色方案切换时, 使用反转滤镜会对颜色再次反转,</p>
+            <p>这样很好但是不推荐</p>
+          </blockquote>
+        </section>
+        <section class="hide">
+          <h3>#&ensp;数据丢失/未同步</h3>
+          <blockquote>
+            <p>桌面 Firefox 需要用户在同步设置中开启附加组件选项.</p>
+            <p>Firefox for Android 不会将数据与用户帐户同步.</p>
+            <p>扩展数据每 10 分钟或用户主动选择同步时同步一次.</p>
+            <p>或者在 "设置 > 同步" 或 Mozilla 帐户图标中手动触发同步.</p>
+            <p>最大可同步保存的数据大概在 400 多条.</p>
+            <p>准确来说, 最少可同步 404 条, 最多不超过 505 条.</p>
+            <p>最久未再使用的数据将最先被遗忘.</p>
+          </blockquote>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
