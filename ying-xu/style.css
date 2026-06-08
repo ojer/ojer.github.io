@@ -50,6 +50,8 @@ body {
   background-size: 4px 4px;
   position: relative;
   cursor: pointer;
+  border: dotted 1px var(--color-gray);
+  box-sizing: border-box;
 }
 
 #water {
