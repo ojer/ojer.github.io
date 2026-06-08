@@ -7,6 +7,7 @@ var {
 } = globalThis;
 
 const MODES = [
+  [5, 5, 0.5],
   [5, 5, 10],
   [4, 6, 15],
   [4, 6, 20],
@@ -104,7 +105,10 @@ const foo = () => {
     }
   }
   if (rafCancel || tss === 0) {
-    if (tss === 0) releaseWakeLock();
+    if (tss === 0) {
+      releaseWakeLock();
+    }
+    elWater.style.height = "0";
     return;
   }
   raf = requestAnimationFrame(foo);
