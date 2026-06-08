@@ -573,7 +573,4 @@
 
     main();
   }
-  const div = document.createElement("div");
-  div.textContent = document.body.offsetWidth;
-  document.body.appendChild(div);
 })();
