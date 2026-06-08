@@ -82,8 +82,19 @@ body {
 .controle {
   width: var(--man-width);
   color: var(--color-accent);
-  font-weight: bold;
   display: flex;
-  text-decoration: underline;
   justify-content: space-between;
+}
+.controle > div {
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.controle > div.active {
+  background-image: linear-gradient(transparent 1px, var(--color-accent) 1px);
+  background-size: 2px 2px;
+  color: var(--color-bg);
+  text-decoration: unset;
 }

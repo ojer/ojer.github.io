@@ -1,0 +1,255 @@
+@charset "UTF-8";
+:root:root {
+  color-scheme: light dark;
+  --color-base-front: black;
+  --color-base-back: white;
+  --color-base-neutral: gray;
+  --color-base-accent: #ac1f18;
+  --max-size-1: max(1px, 0.05vmin);
+  --max-width: min(100vmin, 480px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:root {
+    --color-front: var(--color-base-neutral);
+    --color-back: var(--color-base-front);
+    --color-neutral: var(--color-base-neutral);
+    --color-accent: var(--color-base-accent);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:root {
+    --color-front: var(--color-base-front);
+    --color-back: var(--color-base-back);
+    --color-neutral: var(--color-base-neutral);
+    --color-accent: var(--color-base-accent);
+  }
+}
+
+html,
+body {
+  color: var(--color-front);
+  background-color: var(--color-back);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  --font-size-base: calc(0.04 * var(--max-width));
+  line-height: 1.4;
+  max-width: var(--max-width);
+  margin: auto;
+  padding: calc(8 * var(--max-size-1));
+  position: relative;
+}
+
+.main::after {
+  content: "";
+  background-color: var(--color-accent);
+  color: white;
+
+  font-size: calc(1.2 * var(--font-size-base));
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: calc(40 * var(--max-size-1));
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+  opacity: 0.7;
+  position: absolute;
+  top: -100%;
+}
+
+.flex {
+  display: flex;
+}
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  gap: var(--max-size-1);
+  color: var(--color-accent);
+  text-align: center;
+  margin: calc(5 * var(--max-size-1)) 0;
+  & .canlendar-yd {
+    flex: 1;
+    font-weight: bold;
+    font-size: calc(1.2 * var(--font-size-base));
+    cursor: pointer;
+    padding: var(--font-size-base) 0;
+    position: relative;
+
+    &.oth-month::after {
+      content: "返回今天";
+      font-size: calc(0.7 * var(--font-size-base));
+      font-weight: 500;
+      color: var(--color-accent);
+      display: block;
+      position: absolute;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  & .btn-group {
+    flex: 1;
+    & .btn {
+      flex: 1;
+      font-size: calc(1.2 * var(--font-size-base));
+      font-weight: bold;
+      color: var(--color-accent);
+      cursor: pointer;
+      padding: var(--font-size-base) 0;
+      & span {
+        display: inline-block;
+      }
+    }
+  }
+}
+.week {
+  justify-content: space-evenly;
+  color: var(--color-back);
+  gap: var(--max-size-1);
+  margin-bottom: calc(3 * var(--max-size-1));
+}
+
+.week > div {
+  flex: 1;
+  text-align: center;
+  background: var(--color-neutral);
+  color: var(--color-priamry);
+  border-radius: calc(2 * var(--max-size-1));
+  line-height: 2;
+}
+.week > div:nth-last-child(-n + 2) {
+  background: var(--color-accent);
+  color: var(--color-back);
+}
+
+.month-content {
+  transform_: translate3d(
+    attr(data-transfrom-x px, 0),
+    attr(data-transfrom-y px, 0),
+    0
+  );
+  & .month-days {
+    justify-content: flex-start;
+    color: var(--color-front);
+    flex-wrap: wrap;
+
+    & .day * {
+      pointer-events: none;
+    }
+    & .day {
+      flex: 0 0 14.285%;
+      flex-direction: column;
+      aspect-ratio: 1;
+      font-size: var(--font-size-base);
+      position: relative;
+      box-shadow: 0 0 var(--max-size-1) var(--color-neutral);
+      border-radius: calc(3 * var(--max-size-1));
+      box-sizing: border-box;
+
+      &.check {
+        background-color: #b7554e16;
+        box-shadow: inset 0 0 calc(1 * var(--max-size-1)) var(--color-accent);
+      }
+
+      &.today {
+        color: var(--color-accent);
+        font-weight: bold;
+        background-color: #b7554e48;
+      }
+      &.weekend,
+      &.statutory-holidays,
+      &.working-day {
+        font-weight: 600;
+      }
+
+      &.weekend,
+      &.statutory-holidays {
+        color: var(--color-accent);
+      }
+
+      &.statutory-holidays::before,
+      &.working-day::before {
+        position: absolute;
+        right: var(--max-size-1);
+        top: var(--max-size-1);
+        font-size: calc(0.6 * var(--font-size-base));
+        /* box-shadow: 0 0 calc(5 * var(--max-size-1)) var(--color-accent); */
+        border-radius: var(--max-size-1);
+        padding: var(--max-size-1) calc(2 * var(--max-size-1));
+        color: var(--color-back);
+      }
+      &.statutory-holidays::before {
+        content: "休";
+        background-color: var(--color-accent);
+      }
+      &.working-day::before {
+        content: "班";
+        background-color: var(--color-neutral);
+      }
+
+      &.festival::after {
+        content: attr(data-festival);
+        position: absolute;
+        font-size: calc(0.4 * var(--font-size-base));
+        color: var(--color-accent);
+        left: 0;
+        font-weight: 600;
+        bottom: var(--max-size-1);
+        padding: 0 calc(2 * var(--max-size-1));
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      & .day-lunar {
+        font-size: calc(0.6 * var(--font-size-base));
+        &.day-lunar.day-solar-term::after {
+          color: var(--color-accent);
+          font-weight: bold;
+          content: attr(data-solar-term);
+          position: absolute;
+          left: var(--max-size-1);
+          top: var(--max-size-1);
+          box-shadow: inset 0 0 0 calc(1 * var(--max-size-1))
+            var(--color-accent);
+          border-radius: var(--max-size-1);
+          padding: calc(5 * var(--max-size-1)) var(--max-size-1);
+          writing-mode: vertical-rl;
+        }
+      }
+
+      & .lunar-first-day {
+        font-weight: 500;
+        padding: 0 calc(2 * var(--max-size-1));
+        box-sizing: border-box;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.today-content {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-accent);
+  font-weight: 500;
+  font-size: calc(1 * var(--font-size-base));
+  margin: calc(5 * var(--max-size-1)) 0;
+  padding: var(--font-size-base) 0;
+  & .checkd-day {
+    color: var(--color-neutral);
+  }
+}

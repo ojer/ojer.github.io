@@ -1,16 +1,24 @@
+var {
+  navigator,
+  requestAnimationFrame,
+  cancelAnimationFrame,
+  document,
+  window,
+} = globalThis;
+
 const MODES = [
   [5, 5, 10],
   [4, 6, 15],
   [4, 6, 20],
 ];
 
-const elMain = globalThis.document.getElementById("main");
-const elWater = globalThis.document.getElementById("water");
-const elMoon = globalThis.document.getElementById("moon");
-const elMode = globalThis.document.getElementById("mode");
-const elTime = globalThis.document.getElementById("time");
-const elFull = globalThis.document.getElementById("full");
-const elMuted = globalThis.document.getElementById("muted");
+const elMain = document.getElementById("main");
+const elWater = document.getElementById("water");
+const elMoon = document.getElementById("moon");
+const elMode = document.getElementById("mode");
+const elTime = document.getElementById("time");
+const elFull = document.getElementById("full");
+const elMuted = document.getElementById("sound");
 
 let zero = 0;
 let status = 0;
@@ -20,12 +28,12 @@ let rafCancel = false;
 let timerStart = 0;
 let t0, t1, t2;
 
-let muted = true;
+let sound = false;
 let audioContext;
 let wakeLock;
 
 const playTone = (toneType, duration) => {
-  if (muted || !audioContext) {
+  if (!sound || !audioContext) {
     return;
   }
 
@@ -58,8 +66,8 @@ const playTone = (toneType, duration) => {
 
 const acquireWakeLock = async () => {
   try {
-    if (globalThis.navigator.wakeLock) {
-      wakeLock = await globalThis.navigator.wakeLock.request("screen");
+    if (navigator.wakeLock) {
+      wakeLock = await navigator.wakeLock.request("screen");
     }
   } catch {
     //ignore
@@ -99,7 +107,7 @@ const foo = () => {
     if (tss === 0) releaseWakeLock();
     return;
   }
-  raf = globalThis.requestAnimationFrame(foo);
+  raf = requestAnimationFrame(foo);
 };
 
 const start = () => {
@@ -109,7 +117,7 @@ const start = () => {
 
   elMode.textContent = `${MODES[mode][0]},${MODES[mode][1]}`;
   rafCancel = true;
-  globalThis.cancelAnimationFrame(raf);
+  cancelAnimationFrame(raf);
   timerStart = Date.now();
   zero = Date.now();
   status = 0;
@@ -117,7 +125,7 @@ const start = () => {
   elWater.style.height = `0%`;
   releaseWakeLock();
   acquireWakeLock();
-  raf = globalThis.requestAnimationFrame(foo);
+  raf = requestAnimationFrame(foo);
 };
 
 const genMoon = (mSize = 0.382) => {
@@ -140,34 +148,50 @@ const changeMode = (e) => {
 };
 
 const muteChange = () => {
-  if (muted) {
-    elMuted.setAttribute("style", "color:red");
-    muted = false;
+  if (sound) {
+    sound = false;
+    elMuted.classList.remove("active");
+  } else {
+    sound = true;
+    elMuted.classList.add("active");
     if (!audioContext) {
-      if (globalThis.AudioContext) {
-        audioContext = new globalThis.AudioContext();
-      } else {
-        audioContext = new globalThis.webkitAudioContext();
-      }
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      audioContext = new AudioContext();
       audioContext.resume();
     }
-  } else {
-    elMuted.setAttribute("style", "color:inherit");
-    muted = true;
   }
 };
 const fullScreen = () => {
-  globalThis.document.fullscreen
-    ? globalThis.document.exitFullscreen()
-    : globalThis.document.body.requestFullscreen();
+  const elem = document.documentElement;
+  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) {
+      elem.webkitRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+  }
+};
+const fullScreenChange = () => {
+  if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+    elFull.classList.remove("active");
+  } else {
+    elFull.classList.add("active");
+  }
 };
 
 elMuted.addEventListener("click", muteChange);
 elFull.addEventListener("click", fullScreen);
 elMain.addEventListener("click", changeMode);
-
-globalThis.document.addEventListener("visibilitychange", () => {
-  if (globalThis.document.visibilityState === "visible" && timerStart > 0) {
+document.addEventListener("fullscreenchange", fullScreenChange);
+document.addEventListener("webkitfullscreenchange", fullScreenChange);
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && timerStart > 0) {
     acquireWakeLock();
   }
 });
