@@ -90,14 +90,14 @@ const foo = () => {
 
   const t = Date.now() - zero;
   if (status === 0) {
-    elWater.style.height = `${(t / t0) * 100}%`;
+    elWater.style.transform = `translateY(${100 - (t / t0) * 100}%)`;
     if (t >= t0) {
       zero = Date.now();
       status = 1;
       playTone(status, MODES[mode][status]);
     }
   } else {
-    elWater.style.height = `${100 - (t / t1) * 100}%`;
+    elWater.style.transform = `translateY(${(t / t1) * 100}%)`;
     if (t >= t1) {
       zero = Date.now();
       status = 0;
@@ -108,7 +108,7 @@ const foo = () => {
     if (tss === 0) {
       releaseWakeLock();
     }
-    elWater.style.height = "0";
+    elWater.style.transform = "translateY(100%)";
     return;
   }
   raf = requestAnimationFrame(foo);
@@ -126,7 +126,7 @@ const start = () => {
   zero = Date.now();
   status = 0;
   rafCancel = false;
-  elWater.style.height = `0%`;
+  elWater.style.transform = "translateY(100%)";
   releaseWakeLock();
   acquireWakeLock();
   raf = requestAnimationFrame(foo);
@@ -144,9 +144,7 @@ const genMoon = (mSize = 0.382) => {
   ctx.fill();
 };
 
-const changeMode = (e) => {
-  e.preventDefault();
-  e.stopPropagation();
+const changeMode = () => {
   mode = mode >= MODES.length - 1 ? 0 : mode + 1;
   start();
 };

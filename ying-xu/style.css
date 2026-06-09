@@ -60,6 +60,8 @@ body {
   width: 100%;
   background-color: var(--color-accent);
   mix-blend-mode: var(--mix-blend-mode);
+  transform: translateY(100%);
+  will-change: transform;
 }
 
 #moon {
@@ -91,6 +93,11 @@ body {
   padding: 0.5rem 1rem;
   cursor: pointer;
   text-decoration: underline;
+}
+
+#main:focus-visible,
+.controle > div:focus-visible {
+  outline: 2px solid var(--color-accent);
 }
 
 .controle > div.active {
