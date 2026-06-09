@@ -9,19 +9,18 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --color-bg: #1c1b22;
-    --color-gray: #23222b;
     --color-accent: #00485a;
     --mix-blend-mode: color-dodge;
+    --moon-bg: #d6ecf0 3%;
   }
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     --color-bg: #fff;
-    --color-gray: #f0f0f4;
-    --color-text: #15141a;
     --color-accent: #60adff;
     --mix-blend-mode: color-burn;
+    --moon-bg: #d6ecf0 38%;
   }
 }
 
@@ -46,11 +45,10 @@ body {
   height: var(--man-width);
   width: var(--man-width);
   overflow: hidden;
-  background-image: linear-gradient(transparent 3px, var(--color-gray) 1px);
+  background-image: linear-gradient(transparent 3px, var(--color-bg) 1px);
   background-size: 4px 4px;
   position: relative;
   cursor: pointer;
-  border: dotted 1px var(--color-gray);
   box-sizing: border-box;
 }
 
@@ -71,6 +69,7 @@ body {
   bottom: 0;
   left: 0;
   z-index: -1;
+  background-color: color-mix(in srgb, #0000, var(--moon-bg));
 }
 
 .info {
